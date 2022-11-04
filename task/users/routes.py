@@ -1,8 +1,8 @@
-from flask import Blueprint, json
+from flask import Blueprint
 
 user_route = Blueprint('users', __name__)
 
-@user_route.route('/', methods=['GET'])
+@user_route.get('/')
 def index():
     my_info = {
         "slackUsername": "KayKay",
