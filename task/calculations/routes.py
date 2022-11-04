@@ -5,9 +5,9 @@ from .schema import CalculationBody, SuccessResponseSchema, NoOperationResponseS
 
 calculation_route = Blueprint('calculation', __name__)
 
-@calculation_route.post('/')
+@calculation_route.post('/calculator')
 @validate()
-def calculate(body: CalculationBody):
+def calculator(body: CalculationBody):
     operation_type = body.operation_type
     x = body.x
     y = body.y
