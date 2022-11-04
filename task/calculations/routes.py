@@ -18,19 +18,29 @@ def calculator(body: CalculationBody):
         'multiplication': multiply,
         'division': divide
     }
+    # Synonyms of operations that will be searched in operation_type string
+    operations_synonyms = {
+        'add': add,
+        'plus': add,
+        'minus': subtract,
+    }
+    operations.update(operations_synonyms)
 
-    if operation_type in operations:
-        result = operations[operation_type](x, y)
+    operation_type_sentence = operation_type.split(' ')
+    
+    # Checking if any word in sentence matches any of the operations in the given dictionary
+    for word in operation_type_sentence:
+        if word in operations:
+            result = operations[word](x, y)
 
-    else:
-        return NoOperationResponseSchema(
+            return SuccessResponseSchema(
+            slackUsername = 'KayKay',
+            operation_type = word,
+            result = result
+        ), 200
+    
+    return NoOperationResponseSchema(
             slackUsername = 'KayKay',
             operation_type = operation_type,
             result = 0
         ), 400
-
-    return SuccessResponseSchema(
-        slackUsername = 'KayKay',
-        operation_type = operation_type,
-        result = result
-    ), 200
