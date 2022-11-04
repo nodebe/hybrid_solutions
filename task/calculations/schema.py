@@ -9,7 +9,7 @@ class CalculationBody(BaseModel):
 class SuccessResponseSchema(BaseModel):
     slackUsername: str
     operation_type: str
-    result: int | float
+    result: int
 
 class NoOperationResponseSchema(BaseModel):
     message: str
