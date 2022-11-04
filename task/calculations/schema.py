@@ -12,4 +12,6 @@ class SuccessResponseSchema(BaseModel):
     result: int
 
 class NoOperationResponseSchema(BaseModel):
-    message: str
+    slackUsername: str
+    operation_type: str
+    result: int

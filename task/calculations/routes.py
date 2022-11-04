@@ -24,7 +24,9 @@ def calculator(body: CalculationBody):
 
     else:
         return NoOperationResponseSchema(
-            message = 'Operation does not exist!'
+            slackUsername = 'KayKay',
+            operation_type = operation_type,
+            result = 0
         ), 400
 
     return SuccessResponseSchema(
